@@ -1,35 +1,29 @@
 const rows = document.querySelectorAll('.row');
 let currentIndex = 0;
-let accumulatedDelta = 0; // Накопитель для значения deltaY
-const threshold = 400; // Порог для переключения блоков
+let accumulatedDelta = 0;
+const threshold = 400;
 
-// Функция обновления видимости
+// Обновление видимости секций
 function updateRows(index) {
     rows.forEach((row, i) => {
-        if (i === index) {
-            row.classList.add('active');
-        } else {
-            row.classList.remove('active');
-        }
+        row.classList.toggle('active', i === index);
     });
 }
 
-// Обработчик события прокрутки
+// Обработка прокрутки
 window.addEventListener('wheel', (event) => {
-    accumulatedDelta += event.deltaY; // Накопление прокрутки
+    accumulatedDelta += event.deltaY;
 
     if (accumulatedDelta > threshold && currentIndex < rows.length - 1) {
-        // Прокрутка вниз
         currentIndex++;
         updateRows(currentIndex);
-        accumulatedDelta = 0; // Сброс накопленного значения
+        accumulatedDelta = 0;
     } else if (accumulatedDelta < -threshold && currentIndex > 0) {
-        // Прокрутка вверх
         currentIndex--;
         updateRows(currentIndex);
-        accumulatedDelta = 0; // Сброс накопленного значения
+        accumulatedDelta = 0;
     }
 });
 
-// Инициализация первого блока
+// Инициализация первой секции
 updateRows(currentIndex);
