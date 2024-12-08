@@ -17,6 +17,11 @@ h1, h2, p, ul, a {
 p, ul, li {
   font: 400 clamp(1.1rem, 1.5vw, 1.125rem) Tahoma, Geneva, Verdana, sans-serif;
 }
+@media (max-width: 1600px) {
+  p, ul, li {
+    font: 400 clamp(1rem, 1.5vw, 1.1rem) Tahoma, Geneva, Verdana, sans-serif;
+  }
+}
 
 body, html {
   margin: 0;
@@ -25,12 +30,35 @@ body, html {
   overflow: hidden;
 }
 
+.banner_img {
+  background-size: auto;
+  transform: rotate(0deg);
+  background-repeat: repeat;
+  opacity: 0.025;
+  position: absolute;
+  z-index: 99;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
 section .container .row {
   display: none;
   align-items: center;
   opacity: 0;
   transform: translateY(50px);
   transition: opacity 0.8s ease, transform 0.8s ease;
+}
+section .container .row#banner > div {
+  display: block;
+}
+section .container .row#banner .text_wrapper {
+  position: absolute;
+  text-align: center;
+  top: 75%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 section .container .row.active {
   display: flex;
@@ -44,9 +72,86 @@ section .container .row > div {
   flex-direction: column;
   justify-content: center;
 }
+section .container .row .text_wrapper {
+  position: relative;
+  z-index: 150;
+  background: #f8f9fb;
+}
 section .container .row .col-md-6 img {
   max-width: 100%;
   height: auto;
+}
+
+.container_scroll {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.container_scroll .chevron {
+  position: absolute;
+  width: 28px;
+  height: 8px;
+  opacity: 1;
+  transform: scale3d(0.5, 0.5, 0.5);
+  animation: move 3s ease-out infinite;
+}
+.container_scroll .chevron:first-child {
+  animation: move 3s ease-out 1s infinite;
+}
+.container_scroll .chevron:nth-child(2) {
+  animation: move 3s ease-out 2s infinite;
+}
+.container_scroll .chevron:before, .container_scroll .chevron:after {
+  content: " ";
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 51%;
+  background: #595c67;
+}
+.container_scroll .chevron:before {
+  left: 0;
+  transform: skew(0deg, 30deg);
+}
+.container_scroll .chevron:after {
+  right: 0;
+  width: 50%;
+  transform: skew(0deg, -30deg);
+}
+@keyframes move {
+  25% {
+    opacity: 1;
+  }
+  33% {
+    opacity: 1;
+    transform: translateY(30px);
+  }
+  67% {
+    opacity: 1;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(55px) scale3d(0.5, 0.5, 0.5);
+  }
+}
+.container_scroll .text {
+  display: block;
+  margin-top: 75px;
+  margin-left: -30px;
+  font-family: "Helvetica Neue", "Helvetica", Arial, sans-serif;
+  font-size: 12px;
+  color: #595c67;
+  text-transform: uppercase;
+  white-space: nowrap;
+  opacity: 0.25;
+  animation: pulse 2s linear alternate infinite;
+}
+@keyframes pulse {
+  to {
+    opacity: 1;
+  }
 }
 
 /*# sourceMappingURL=styles.css.map */

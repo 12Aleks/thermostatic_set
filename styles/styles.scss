@@ -1,9 +1,4 @@
-//@font-face {
-//  font-family: 'Segoe UI';
-//  src: url('../fonts/SegoeUI.ttf') format('truetype');
-//  font-weight: normal;
-//  font-style: normal;
-//}
+
 
 $color--gray: #595c67;
 
@@ -22,8 +17,11 @@ h1, h2, p, ul, a {
   color: $color--gray;
 }
 
-p, ul, li{
-  font:400  clamp(1.1rem, 1.5vw, 1.125rem)  Tahoma, Geneva, Verdana, sans-serif;
+p, ul, li {
+  font: 400 clamp(1.1rem, 1.5vw, 1.125rem) Tahoma, Geneva, Verdana, sans-serif;
+  @media(max-width: 1600px) {
+    font: 400 clamp(1rem, 1.5vw, 1.1rem) Tahoma, Geneva, Verdana, sans-serif;
+  }
 }
 
 body, html {
@@ -32,32 +30,145 @@ body, html {
   height: 100%;
   overflow: hidden;
 }
-section{
+.banner_img{
+  background-size: auto;
+  transform: rotate(0deg);
+  background-repeat: repeat;
+  opacity: .025;
+  position: absolute;
+  z-index: 99;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+section {
   .container {
-
     .row {
       display: none;
       align-items: center;
       opacity: 0;
       transform: translateY(50px);
       transition: opacity .8s ease, transform .8s ease;
+      &#banner{
+        & > div {
+          display: block;
+        }
+        .text_wrapper{
+          position: absolute;
+          text-align: center;
+          top: 75%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+        }
+      }
+
       &.active {
         display: flex;
         opacity: 1;
         transform: translateY(0);
         transition: opacity .8s ease, transform .8s ease;
       }
-      & > div{
+
+      & > div {
         height: 100vh;
         display: flex;
         flex-direction: column;
-        //align-items: center;
         justify-content: center;
       }
+
+      .text_wrapper {
+        position: relative;
+        z-index: 150;
+        background: #f8f9fb;
+      }
+
       .col-md-6 img {
         max-width: 100%;
         height: auto;
       }
+    }
+  }
+}
+
+.container_scroll {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  .chevron {
+    position: absolute;
+    width: 28px;
+    height: 8px;
+    opacity: 1;
+    transform: scale3d(0.5, 0.5, 0.5);
+    animation: move 3s ease-out infinite;
+
+    &:first-child {
+      animation: move 3s ease-out 1s infinite;
+    }
+
+    &:nth-child(2) {
+      animation: move 3s ease-out 2s infinite;
+    }
+
+    &:before, &:after {
+      content: ' ';
+      position: absolute;
+      top: 0;
+      height: 100%;
+      width: 51%;
+      background: $color--gray;
+    }
+
+    &:before {
+      left: 0;
+      transform: skew(0deg, 30deg);
+    }
+
+    &:after {
+      right: 0;
+      width: 50%;
+      transform: skew(0deg, -30deg);
+    }
+  }
+
+  @keyframes move {
+    25% {
+      opacity: 1;
+
+    }
+    33% {
+      opacity: 1;
+      transform: translateY(30px);
+    }
+    67% {
+      opacity: 1;
+      transform: translateY(40px);
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(55px) scale3d(0.5, 0.5, 0.5);
+    }
+  }
+
+  .text {
+    display: block;
+    margin-top: 75px;
+    margin-left: -30px;
+    font-family: "Helvetica Neue", "Helvetica", Arial, sans-serif;
+    font-size: 12px;
+    color: $color--gray;
+    text-transform: uppercase;
+    white-space: nowrap;
+    opacity: .25;
+    animation: pulse 2s linear alternate infinite;
+  }
+
+  @keyframes pulse {
+    to {
+      opacity: 1;
     }
   }
 }
