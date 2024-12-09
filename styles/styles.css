@@ -63,6 +63,8 @@ section .container .row#banner .text_wrapper {
 section .container .row.active {
   display: flex;
   opacity: 1;
+  position: relative;
+  z-index: 200;
   transform: translateY(0);
   transition: opacity 0.8s ease, transform 0.8s ease;
 }
@@ -73,9 +75,10 @@ section .container .row > div {
   justify-content: center;
 }
 section .container .row .text_wrapper {
+  background: rgba(248, 249, 251, 0.5);
+  padding: 10px;
   position: relative;
-  z-index: 150;
-  background: #f8f9fb;
+  box-shadow: 0 0 15px 15px rgba(248, 249, 251, 0.3);
 }
 section .container .row .col-md-6 img {
   max-width: 100%;

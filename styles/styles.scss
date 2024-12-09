@@ -66,6 +66,8 @@ section {
       &.active {
         display: flex;
         opacity: 1;
+        position: relative;
+        z-index: 200;
         transform: translateY(0);
         transition: opacity .8s ease, transform .8s ease;
       }
@@ -78,9 +80,10 @@ section {
       }
 
       .text_wrapper {
+        background: rgba(248, 249, 251, 0.5);
+        padding: 10px;
         position: relative;
-        z-index: 150;
-        background: #f8f9fb;
+        box-shadow: 0 0 15px 15px rgba(248, 249, 251, 0.3);
       }
 
       .col-md-6 img {
