@@ -45,11 +45,12 @@ body, html {
 section {
   .container {
     .row {
-      display: none;
+      display: table-column;
       align-items: center;
       opacity: 0;
       transform: translateY(50px);
       transition: opacity .8s ease, transform .8s ease;
+
       &#banner{
         & > div {
           display: block;
@@ -69,7 +70,7 @@ section {
         position: relative;
         z-index: 200;
         transform: translateY(0);
-        transition: opacity .8s ease, transform .8s ease;
+        transition: opacity 2s ease, transform 2s ease;
       }
 
       & > div {

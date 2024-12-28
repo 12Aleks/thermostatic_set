@@ -77,7 +77,7 @@ export function moveModelToPosition(positionId) {
                 x: positionActive.position.x,
                 y: positionActive.position.y,
                 z: positionActive.position.z,
-                duration: 1.5,
+                duration: 1.2,
                 ease: "power1.out",
             });
             gsap.to(model.rotation, {

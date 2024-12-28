@@ -44,7 +44,7 @@ body, html {
 }
 
 section .container .row {
-  display: none;
+  display: table-column;
   align-items: center;
   opacity: 0;
   transform: translateY(50px);
@@ -66,7 +66,7 @@ section .container .row.active {
   position: relative;
   z-index: 200;
   transform: translateY(0);
-  transition: opacity 0.8s ease, transform 0.8s ease;
+  transition: opacity 2s ease, transform 2s ease;
 }
 section .container .row > div {
   height: 100vh;

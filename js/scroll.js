@@ -26,10 +26,11 @@ export function setupScrollHandler() {
         updateModelPosition(currentIndex);
 
         if (currentIndex === rows.length - 1) {
-            scrollContainer.style.display = 'none';
+            scrollContainer.style.opacity = '0';
             scrollToTopBtn.classList.add('visible');
         } else {
             scrollContainer.style.display = 'flex';
+            scrollContainer.style.opacity = '1';
             scrollToTopBtn.classList.remove('visible');
         }
     }, { passive: false });
