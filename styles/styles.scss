@@ -22,6 +22,9 @@ p, ul, li {
   @media(max-width: 1600px) {
     font: 400 clamp(1rem, 1.5vw, 1.1rem) Tahoma, Geneva, Verdana, sans-serif;
   }
+  @media(max-width: 1198.98px) {
+    font: 400 clamp(.875rem, 1.5vw, 1rem) Tahoma, Geneva, Verdana, sans-serif;
+  }
 }
 
 body, html {
@@ -81,10 +84,8 @@ section {
       }
 
       .text_wrapper {
-        background: rgba(248, 249, 251, 0.5);
         padding: 10px;
         position: relative;
-        box-shadow: 0 0 15px 15px rgba(248, 249, 251, 0.3);
       }
 
       .col-md-6 img {
@@ -161,8 +162,7 @@ section {
     display: block;
     margin-top: 75px;
     margin-left: -30px;
-    font-family: "Helvetica Neue", "Helvetica", Arial, sans-serif;
-    font-size: 12px;
+    font: 400 12px "Helvetica Neue", "Helvetica", Arial, sans-serif;
     color: $color--gray;
     text-transform: uppercase;
     white-space: nowrap;
