@@ -51,12 +51,12 @@ export function setupScrollHandler() {
         { passive: false }
     );
 
-    scrollToTopBtn.addEventListener('click', () => {
+    scrollToTopBtn?.addEventListener('click', () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
         currentIndex = 0;
         updateRows(currentIndex);
         scrollContainer.style.display = 'flex';
-        scrollToTopBtn.classList.remove('visible');
+        scrollToTopBtn?.classList.remove('visible');
     });
 
     updateRows(currentIndex);

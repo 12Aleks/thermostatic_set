@@ -29,7 +29,7 @@ const modelPosition = [
 // Load the environment map
 function loadEnvMap() {
     const textureLoader = new THREE.TextureLoader();
-    return textureLoader.load('./models/4960.jpg', (texture) => {
+    return textureLoader.load('/thermostatic_set/models/4960.jpg', (texture) => {
         texture.mapping = THREE.EquirectangularRefractionMapping;
         texture.encoding = THREE.sRGBEncoding;
         envMap = texture;
@@ -40,7 +40,7 @@ function loadEnvMap() {
 export function loadModel(scene) {
     loadEnvMap(); // Load the environment map first
 
-    loader.load('./models/thermostatic.glb', (gltf) => {
+    loader.load('/thermostatic_set/models/thermostatic.glb', (gltf) => {
         model = gltf.scene;
 
         gltf.scene.traverse((child) => {
