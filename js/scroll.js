@@ -16,18 +16,15 @@ export function setupScrollHandler() {
         'wheel',
         async (event) => {
             event.preventDefault();
-            if (adapterAnimating) return; // Prevent scroll during animation
-
+            if (adapterAnimating) return;
             accumulatedDelta += event.deltaY;
 
-            // Handle transitions between blocks
             if (accumulatedDelta > threshold && currentIndex < rows.length - 1) {
                 currentIndex++;
                 updateRows(currentIndex);
                 accumulatedDelta = 0;
             } else if (accumulatedDelta < -threshold && currentIndex > 0) {
                 if (rows[currentIndex].id === 'adapter') {
-                    // If inside the 'adapter' block and scrolling up
                     await triggerAdapterExitAnimation();
                 } else {
                     currentIndex--;
@@ -38,7 +35,6 @@ export function setupScrollHandler() {
 
             updateModelPosition(currentIndex);
 
-            // Update scroll container and top button visibility
             if (currentIndex === rows.length - 1) {
                 scrollContainer.style.opacity = '0';
                 scrollToTopBtn?.classList.add('visible');
@@ -77,32 +73,28 @@ function updateRows(index) {
 function updateModelPosition(index) {
     const sectionId = rows[index].id;
 
-    // Check if it's the 'adapter' block
+
     if (sectionId === 'adapter') {
         if (!adapterEntered) {
-            // Trigger animation when entering
             controlAnimation(sectionId, { part: 'enter', duration: 5500 });
             adapterEntered = true;
         }
     } else {
-        adapterEntered = false; // Reset flag if leaving the block
+        adapterEntered = false;
     }
 
-    // Move the model based on section
     moveModelToPosition(sectionId);
     if (sectionId !== 'adapter') {
-        controlAnimation(sectionId); // Regular animation for other sections
+        controlAnimation(sectionId);
     }
 }
 
 async function triggerAdapterExitAnimation() {
-    adapterAnimating = true; // Set the blocking flag
+    adapterAnimating = true;
 
-    // Trigger the exit animation for the adapter block
     await controlAnimation('adapter', { part: 'exit', duration: 5500 });
 
-    // Allow scroll again after animation completes
     adapterAnimating = false;
-    currentIndex--; // Move to the previous block
+    currentIndex--;
     updateRows(currentIndex);
 }

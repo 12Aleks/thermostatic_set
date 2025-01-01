@@ -20,10 +20,10 @@ draco.setDecoderPath('https://www.gstatic.com/draco/v1/decoders/');
 loader.setDRACOLoader(draco);
 
 const modelPosition = [
-    {id: 'banner', position: {x: 0.2, y: 0.1, z: 0}, rotation: {x: 0.05, y: 0.5, z: 0}, scale: {x: 0.09, y: 0.09, z: 0.09}},
-    {id: 'thermostatic', position: {x: .6, y: -.3, z: 0}, rotation: {x: 0, y: 3.5, z: 0}, scale: {x: 0.07, y: 0.07, z: 0.07}},
-    {id: 'slim', position: {x: -.6, y: 0, z: 0}, rotation: {x: .1, y: .5, z: 0}, scale: {x: 0.068, y: 0.068, z: 0.068}},
-    {id: 'adapter', position: {x: .8, y: 0, z: 0}, rotation: {x: .3, y: .5, z: 0}, scale: {x: 0.068, y: 0.068, z: 0.068}},
+    { id: "banner", position: { x: 0.2, y: 0.1, z: 0 }, rotation: { x: 0.05, y: 0.5, z: 0 }, scale: { x: 0.09, y: 0.09, z: 0.09 }, color: "#ff0000" }, // Red
+    { id: "thermostatic", position: { x: 0.6, y: -0.3, z: 0 }, rotation: { x: 0, y: 3.5, z: 0 }, scale: { x: 0.07, y: 0.07, z: 0.07 }, color: "#00ff00" }, // Green
+    { id: "slim", position: { x: -0.6, y: 0, z: 0 }, rotation: { x: 0.1, y: 0.5, z: 0 }, scale: { x: 0.07, y: 0.07, z: 0.07 }, color: "#0000ff" }, // Blue
+    { id: "adapter", position: { x: 0.8, y: 0, z: 0 }, rotation: { x: 0.4, y: 0.6, z: 0 }, scale: { x: 0.07, y: 0.07, z: 0.07 }, color: "#ffff00" }, // Yellow
 ];
 
 // Load the environment map
@@ -39,7 +39,6 @@ function loadEnvMap() {
 // Load the model and apply environment map
 export function loadModel(scene) {
     loadEnvMap(); // Load the environment map first
-
     loader.load('/thermostatic_set/models/thermostatic.glb', (gltf) => {
         model = gltf.scene;
 
@@ -67,6 +66,7 @@ export function loadModel(scene) {
         console.error('An error happened', error);
     });
 }
+
 
 // Move the model to a specific position
 export function moveModelToPosition(positionId) {
